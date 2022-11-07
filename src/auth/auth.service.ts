@@ -21,6 +21,7 @@ export class AuthService {
           id: uuid(),
         });
       }
+
       let userinfo;
       if (account) {
         userinfo = await this.userService.addAccount(user.id, account);

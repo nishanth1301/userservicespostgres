@@ -18,7 +18,7 @@ import { Observable } from 'rxjs';
 import { UserFilterDto } from './models/Userfilter.dto';
 import { encodePassword } from 'src/utilits/utilis';
 
-@Controller('user')
+@Controller('user')localhost:3000/user/
 export class UserController {
   constructor(private userService: UserService) {}
   @Post('')
@@ -53,10 +53,7 @@ export class UserController {
     if (Object.keys(param).length) {
       return this.userService.findWithFilters(param);
     } else {
-      return this.userService.paginate({
-        page,
-        limit,
-      });
+      return this.userService.getAll();
     }
   }
 }

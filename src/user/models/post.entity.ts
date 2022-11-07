@@ -41,6 +41,5 @@ export class UserFeed extends BaseEntity {
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
-  member: UserFeed[];
 }
 export default UserFeed;

@@ -1,13 +1,15 @@
-import { Module } from '@nestjs/common';
+import { Inject, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserModule } from './user/user.module';
 import { AccountModule } from './account/account.module';
 import { AuthModule } from './auth/auth.module';
+import { Auth1Module } from './auth1/auth1.module';
 import UserFeed from './user/models/post.entity';
 import AccountFeed from './account/models/account.entity';
+import { User } from './auth1/dto/user.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -21,10 +23,11 @@ import AccountFeed from './account/models/account.entity';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([UserFeed, AccountFeed]),
+    TypeOrmModule.forFeature([UserFeed, AccountFeed, User]),
     UserModule,
     AccountModule,
     AuthModule,
+    Auth1Module,
   ],
   controllers: [AppController],
   providers: [AppService],

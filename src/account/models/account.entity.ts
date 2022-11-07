@@ -15,11 +15,11 @@ export class AccountFeed extends BaseEntity {
 
   @Column({ default: '' })
   accountname: string;
-  @OneToMany((type) => UserFeed, (userfeed) => userfeed.accountfeed, {
+  @OneToMany(() => UserFeed, (userfeed) => userfeed.accountfeed, {
     cascade: true,
     eager: true,
   })
-  @JoinColumn({ referencedColumnName: 'id' })
+  @JoinColumn()
   member: UserFeed[];
 }
 export default AccountFeed;

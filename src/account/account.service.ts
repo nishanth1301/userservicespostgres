@@ -13,7 +13,8 @@ export class AccountService {
     private readonly AccountPostRepository: Repository<AccountFeed>,
   ) {}
   async create(params: AccountDto) {
-    return await this.AccountPostRepository.create(params);
+    console.info(params);
+    return await this.AccountPostRepository.save(params);
   }
   async getAll() {
     return await this.AccountPostRepository.find();
